@@ -24,8 +24,8 @@ return [
     |
     */
 
-    // 'destination' => base_path('dist'),
-    'destination' => storage_path('app/static'),
+    'destination' => base_path('dist'),
+    // 'destination' => storage_path('app/static'),
 
     /*
     |--------------------------------------------------------------------------
