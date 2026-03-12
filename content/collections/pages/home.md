@@ -21,7 +21,7 @@ intro_text:
         type: text
         text: 'Vi udvikler stærke brands, koncepter og digitale løsninger – fra branding og kampagner til web, SEO og performance marketing.'
 updated_by: c57f1b21-cfae-4dbe-bc3a-58efc89db28a
-updated_at: 1772742145
+updated_at: 1773332714
 intro_media: video/showreel-web-6_1-(1).mp4
 page_sections:
   -
@@ -313,4 +313,5 @@ page_sections:
       - 2dcd868d-5944-4d4c-ace7-5e9ca6f51f9d
     type: featured_testimonials
     enabled: true
+intro_poster: videoframe_21027.png
 ---

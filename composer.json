@@ -17,7 +17,7 @@
         "mitydigital/iconamic": "^3.0",
         "ndx/statamic-bard-color-picker": "^3.0",
         "spatie/fork": "^1.2",
-        "statamic/cms": "6.5.0",
+        "statamic/cms": "6.6.0",
         "statamic/ssg": "^4.1"
     },
     "require-dev": {

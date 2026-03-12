@@ -1,10 +1,10 @@
 <article class="wrapper">
     <header>
-        <div class="full-bleed h-[clamp(20rem,50cqmin,35rem)]" style="view-transition-name: image_{{ id }};">
+        <div class="full-bleed h-[clamp(20rem,50cqmin,35rem)] bg-cover bg-center bg-no-repeat" style="view-transition-name: image_{{ id }}; {{ if featured_media }}background-image: url('{{ glide:featured_media width="160" height="60" fit="crop_focal" format="webp" quality="10" }}'); background-repeat: no-repeat; background-size: cover; {{ /if }}">
             {{ if (featured_media | ends_with('.mp4')) }}
 
             {{ else }}
-                {{ partial:partials/components/picture :imagePath="featured_media" ratio="9" class="w-full h-full object-cover" }}
+                {{ partial:partials/components/image :imagePath="featured_media" w="1600" h="600" class="w-full h-full object-cover" }}
             {{ endif }}
         </div>
         <div class="flex flex-wrap gap-gutter py-lg items-center">

@@ -22,3 +22,12 @@ fields:
       max_files: 1
       type: assets
       display: Media
+  -
+    handle: poster
+    field:
+      container: assets
+      max_files: 1
+      type: assets
+      display: 'Poster billede (video)'
+      if:
+        media: 'not empty'
