@@ -1,0 +1,16 @@
+title: Blog
+icon: collections
+template: blog/show
+layout: layout
+mount: 0e85e02d-f932-4e26-af51-9adf228798ea
+revisions: false
+route: '/{mount}/{slug}/'
+sort_dir: asc
+date_behavior:
+  past: null
+  future: null
+preview_targets:
+  -
+    label: Entry
+    url: '{permalink}'
+    refresh: false

@@ -1,0 +1,9 @@
+{{ _color = color | remove_left('var(--') | remove_right(')') | ensure_left('--color-') }}
+
+{{ if show_popup }}
+    <button class="btn {{ class }}" data-style="{{ color }}{{ outline ?= '-outline' }}" @click="popup = true">{{ text or 'Læs mere' }}</button>
+{{ else }}
+    <{{ as or 'a' }} class="btn {{ class }}" href="{{ url }}" data-style="{{ color }}{{ outline ?= '-outline' }}" {{ if inHeader == true }} :class="{'bg-primary-glare ring-0 text-dark-shade': atTop }" {{ endif }}>
+        {{ text or 'Læs mere' }}
+    </{{ as or 'a' }}>
+{{ endif }}

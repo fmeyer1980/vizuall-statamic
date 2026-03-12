@@ -1,0 +1,7 @@
+{{ if media_type == 'image' }}
+    {{ glide src="{{ image }}" w="600" quality="80" format="webp"  width="600" }}
+        <img class="w-full" loading="lazy" width="{{ width }}" height="{{ height }}" src="{{ url }}" alt="{{ image.alt ? image.alt : title }}">
+    {{ /glide }}
+{{ else }}
+    <img class="w-full" loading="lazy" width="{{ unsplash:width }}" height="{{ unsplash:height }}" src="{{ splash:raw :image="unsplash" width="600" quality="80" auto="format" }}" alt="{{ alt ? alt : title }}">
+{{ /if }}

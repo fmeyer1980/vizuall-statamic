@@ -1,0 +1,16 @@
+.split {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--split-gap, var(--size-600));
+  --split: calc(49.99% - calc(var(--split-gap, 1.8rem) / 2));
+}
+
+.split > *:first-child {
+  flex-basis: var(--split);
+
+}
+
+.split > *:last-child {
+  flex-basis: var(--split);
+
+}

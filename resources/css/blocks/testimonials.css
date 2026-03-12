@@ -1,0 +1,129 @@
+
+
+.testimonials__carousel {
+    --button-size: var(--size-800);
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: calc(33% - (var(--gutter) / 1.8));
+    gap: var(--gutter);
+    scroll-behavior: smooth;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-marker-group: after;
+    anchor-name: --carousel;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    :has(> &) {
+      container-type: inline-size;
+    }
+
+
+
+
+    &::scroll-marker-group {
+      display: flex;
+      gap: 4px;
+      margin-block-start: var(--gutter);
+    }
+
+    &::scroll-button(*) {
+      width: var(--button-size);
+      aspect-ratio: 1/1;
+      background-color: var(--color-light-glare);
+      color: var(--color-dark-shade);
+      border: 0;
+      font-family: var(--font-symbols);
+      font-size: calc(var(--button-size) / 3);
+      cursor: pointer;
+      border-radius: var(--radius-sm);
+      z-index: 99;
+      transition: all 300ms ease;
+      position: fixed;
+      position-anchor: --carousel;
+      background-color: var(--color-dark-shade);
+      color: var(--color-light-glare);
+      border-radius: 50%;
+      opacity: 0;
+      transition: all 0.3s ease-in-out;
+    }
+
+    &:hover {
+      &::scroll-button(left) {
+        translate: -25%;
+      }
+      &::scroll-button(right) {
+        translate: 25%;
+      }
+      &::scroll-button(*) {
+        opacity: 1;
+      }
+    }
+
+    &::scroll-button(*):hover {
+      background-color: var(--color-primary-shade);
+      color: var(--color-light-glare);
+    }
+
+    &::scroll-button(left) {
+      content: '\e900' / 'Scroll left';
+      position-area: left center;
+      translate: 150% 0;
+    }
+
+    &::scroll-button(right) {
+      content: '\e901' / 'Scroll right';
+      position-area: right center;
+      translate: -150% 0;
+    }
+    
+    li::scroll-marker {
+      content: '';
+      display: block;
+      width: var(--size-800);
+      height: 3px;
+      background-color: color-mix(in oklab, var(--color-dark-shade), transparent 80%);
+    }
+
+    li::scroll-marker:target-current{
+      background-color: var(--color-dark-shade);
+    }
+    
+    li{
+      background-color: var(--color-light);
+      padding: var(--gutter);
+      display: grid;
+      grid-auto-rows: auto 1fr auto;
+      gap: var(--size-600);
+      container-type: inline-size;
+      scroll-snap-align: start;
+
+      .citat{
+        font-size: 40cqi;
+        line-height: 1;
+        font-weight: 700;
+        font-family: var(--font-heading);
+        text-box-trim: trim-both;
+        text-box-edge: cap alphabetic;
+        margin-block-end: -0.4em;
+      }
+
+    }
+
+    @container (width < 768px) {
+      grid-auto-columns: clamp(20rem, 40cqi, 30rem);
+      width: 100vw;
+      margin-left: 50%;
+      transform: translateX(-50%);
+      padding-inline-start: var(--gutter);
+      scroll-padding-inline: var(--gutter);
+
+      &::scroll-button(*){
+        display: none;
+      }
+
+    }
+        
+}

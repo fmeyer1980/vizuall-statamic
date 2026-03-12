@@ -1,0 +1,70 @@
+@font-face {
+  font-family: "Borna";
+  src: url("/public/fonts/borna-medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+@font-face {
+  font-family: "AtlassianSans";
+  src: url("/public/fonts/AtlassianSans-latin.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Iconfont";
+  src: url("/public/fonts/Iconfont.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+
+h1,.h1,h2,.h2,h3,.h3,h4,.h4,h5,.h5,h6,.h6{
+  text-wrap: balance;
+  line-height: var(--leading-flat);
+  font-weight: 700;
+  font-family: var(--font-heading);
+}
+
+h1,
+.h1 {
+  font-size: var(--size-800);
+}
+
+h2,
+.h2 {
+  font-size: var(--size-700);
+}
+
+h3,
+.h3 {
+  font-size: var(--size-550);
+}
+
+h4,
+.h4 {
+  font-size: var(--size-400);
+}
+
+h5,
+.h5 {
+  font-size: var(--size-300);
+}
+
+h6,
+.h6 {
+  font-size: var(--size-200);
+}
+
+p{
+  text-wrap: pretty;
+}
+
+.text-large{
+  font-size: var(--size-500);
+  font-weight: 500;
+  line-height: var(--leading-tight);
+}

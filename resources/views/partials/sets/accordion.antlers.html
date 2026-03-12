@@ -1,0 +1,18 @@
+{{ _count = count }}
+
+<div class="bg-white p-gutter rounded-tl-2xl rounded-tr-md rounded-br-2xl rounded-bl-md [&_.details::details-content]:block [&_.details::details-content]:[block-size:0] [&_.details::details-content]:overflow-hidden [&_.details::details-content]:[transition-property:block-size,content-visibility] [&_.details::details-content]:duration-500 transition-behavior: [&_.details::details-content]:transition-discrete [&_.details[open]::details-content]:[block-size:auto] [&_.details[open]::details-content]:[block-size:calc-size(auto,size)] {{ class }}">
+    {{ list }}
+        <details {{ first_item_open == true and first ?= 'open' }} name="accordion_{{ _count }}" class="details border-b border-dark/7 last:border-0 py-600 first:pt-0 last:pb-0" style="--i: {{ count }};">
+            <summary class="cursor-pointer">
+                <div class=" pointer-events-none flex items-center gap-400  font-medium">
+                    {{ svg src="/icons/{{ icon }}" class="h-600 w-auto shrink-0" }}<span>{{ headline }}</span>{{ svg src="arrow-bg" class="h-600 w-auto shrink-0 ml-auto" }}
+                </div>
+            </summary>
+            <div class="pt-200 text-sm prose-p:text-current/60 prose-a:text-primary-shade prose-a:underline prose-a:underline-offset-3 prose-a:decoration-1">
+                {{ text }}
+                    {{ partial src="sets/{type}" }}
+                {{ /text }}
+            </div>
+        </details>
+    {{ /list }}
+</div>

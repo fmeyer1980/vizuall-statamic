@@ -1,0 +1,29 @@
+<dialog 
+    x-cloak
+    x-show="popup" 
+    x-transition:enter="transition ease-out duration-300"
+    x-transition:enter-start="opacity-0"
+    x-transition:enter-end="opacity-100"
+    x-transition:leave="transition ease-in duration-300"
+    x-transition:leave-start="opacity-100"
+    x-transition:leave-end="opacity-0"
+    x-trap.noscroll="popup"
+    x-trap.inert="popup"
+    role="dialog"
+    x-htmldialog="popup = false"
+    x-on:keydown.escape="popup = false"
+    class="backdrop:bg-black/80 backdrop:backdrop-blur-md w-full max-w-[70rem] mx-0 fixed top-1/2 left-1/2 -translate-1/2 @container rounded-custom overflow-clip" 
+    id="popup"
+    >
+    <div class="grid @md:grid-cols-2" x-cloak x-on:click.outside="popup = false">
+            <div class="absolute z-10 bg-white top-[.5rem] right-[.5rem] border-[.5rem] border-white rounded-bl-sm " @click="popup = false"><button class="focus:bg-primary size-700 flex items-center justify-center bg-light rounded-sm autofocus"><span class="sr-only">Luk popup</span>{{ svg src="close" class="h-1/3 w-auto" }}</button></div>
+            <div class=" p-800">
+               <iframe loading="lazy" id="hh_iframe_VCFCM" frameborder="0" style="border: 0px; width: 100%; height: 500px; overflow: hidden;" allowtransparency="true" scrolling="no" src="https://leadvalidator.dk/book/f/uex29?page_url=https://klimadan.dk/privat/beregner/#step-calc-1"></iframe>
+            </div>
+        <div class="relative m-100">
+            <video preload="metadata" playsinline autoplay muted loop class="absolute inset-0 w-full h-full object-cover rounded-custom">
+                <source src="/assets/video/Stemning-klimadan.mov" type="video/mp4">
+            </video>
+        </div>
+    </div>
+</dialog>

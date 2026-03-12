@@ -1,0 +1,21 @@
+<li class="flow-y flow-space-100 flex flex-col gap-400">
+    <div class="order-2">
+        <p class="h5">{{ title }}</p>
+        {{ if position }}
+            <p class="opacity-70 mt-0.5 text-sm">{{ position }}</p>
+        {{ endif }}
+        {{ if phone || email and show_contact }}
+            <ul class="*:flex *:gap-[.4em] text-xs space-y-1 mt-100">
+                {{ if phone }} <li class="flex"><span>Tlf: </span><a href="tel:{{ phone }}"><span class="opacity-70">{{ phone }}</span></a></li>{{ endif }}
+                {{ if email }}<li class="flex"><span>Email: </span><a href="mailto:{{ email }}"><span class="opacity-70">{{ email }}</span></a></li>{{ endif }}
+            </ul>
+        {{ endif }}
+    </div>
+    <div class="order-1 relative aspect-square bg-light-glare flex flex-col p-400 items-start justify-end">
+        {{ if profile_image }}
+            {{ partial:components/image :imagePath="profile_image" class="absolute inset-0 w-full h-full object-cover" }}
+        {{ else }}
+            <span class="absolute top-1/2 left-1/2 -translate-1/2 text-center leading-tight opacity-25" aria-hidden="true">Profil billede kommer</span>
+        {{ endif }}
+    </div>
+</li>

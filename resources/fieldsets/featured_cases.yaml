@@ -1,0 +1,24 @@
+title: 'Featured cases'
+fields:
+  -
+    handle: section_headline
+    field: common_fields.section_headline
+  -
+    handle: random
+    field:
+      type: toggle
+      display: Random
+  -
+    handle: list
+    field:
+      collections:
+        - cases
+      type: entries
+      display: List
+  -
+    handle: amount
+    field:
+      min: 2
+      max: 10
+      type: range
+      display: 'Amount of cases'

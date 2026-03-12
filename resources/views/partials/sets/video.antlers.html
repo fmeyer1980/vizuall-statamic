@@ -1,0 +1,22 @@
+<div class="my-[3em]{{ if last }} !mb-0{{ /if }}" x-data="{ showVideoModal: false }">
+    
+    <button @click="showVideoModal = true, $nextTick(() => $refs.modalCloseButton.focus())" @keyup.escape="showVideoModal = false" @click.away="showVideoModal = false" class="relative w-full bg-dark-shade text-light-glare group block rounded-[3px] aspect-video">
+        <img class="w-full h-full object-cover opacity-40 group-hover:opacity-10 transition-opacity" loading="lazy" width="600" height="340" src="{{ glide:video_image width="600" height="340" }}" alt="">
+        {{ svg src="play" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[22%] fill-current group-hover:scale-[115%] group-hover:rotate-[120deg] transition-all group-hover:text-primary-glare" }}
+    </button>
+
+    <template x-if="showVideoModal">
+        <div class="fixed inset-0 bg-dark-shade/90 text-light-glare z-[99] grid place-items-center" >
+            <button @click="showVideoModal = false" x-ref="modalCloseButton" class="bg-primary text-dark absolute w-800 h-800 top-0 right-0 grid place-items-center" x-ref="modalCloseButton">
+                {{ svg src="close" class="fill-current h-1/3" }}
+            </button>
+            <div class="ttt aspect-video w-[90%] max-w-[1280px] border-[6px] border-light rounded-md">
+                {{ if video }}
+                    <video loop="loop" controls autoplay class="w-full h-full object-cover"><source src="{{ video }}" type="video/mp4"></video>
+                {{ elseif youtube_link }}
+                    <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="w-full h-full object-cover" frameborder="0" src="https://www.youtube.com/embed/{{ youtube_link }}?&autoplay=1" title="YouTube video player"></iframe>
+                {{ /if }}
+            </div>
+        </div>
+    </template>
+</div>

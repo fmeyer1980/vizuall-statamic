@@ -1,0 +1,11 @@
+<button @click="darkMode=!darkMode" class="ml-auto h-[--size-550] w-[calc(var(--size-500)*2)] bg-dark-shade/10 dark:bg-light-glare/10 transition-colors rounded-full text-primary overflow-hidden flex flex-col justify-start items-start p-[3px]" role="switch" aria-checked="false">
+    <span class="sr-only">Color setting</span>
+    <span class="relative flex flex-col items-center size-[calc(var(--size-550)-6px)] transition-all duration-300 dark:translate-x-[calc(var(--size-500)-3px)]">
+        <span class="absolute inset-0 h-full w-full  flex items-center justify-center bg-light-glare text-primary-glare rounded-full dark:opacity-0 overflow-hidden" aria-hidden="true">
+            {{ svg src="light-mode" class="size-[60%] w-auto dark:translate-y-4 translate-y-0 transition-transform duration-500 delay-100 ease-[cubic-bezier(0.68,-0.6,0.32,1.6)]" }}
+        </span>
+        <span class="absolute inset-0 h-full w-full flex items-center justify-center bg-dark-shade text-primary-glare rounded-full opacity-0 dark:opacity-100 overflow-hidden" aria-hidden="true">
+            {{ svg src="dark-mode" class=" size-[60%] w-auto -translate-y-6 dark:translate-y-0 transition-transform duration-500 delay-100 ease-[cubic-bezier(0.68,-0.6,0.32,1.6)]" }}
+        </span>
+    </span>
+ </button>

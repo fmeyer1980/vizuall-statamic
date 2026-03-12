@@ -1,0 +1,15 @@
+<section class="wrapper bg-light group pt-{{ settings.pt }} pb-{{ settings.pb }} grid has-[img]:md:grid-cols-2 items-center gap-gutter">
+    <div class="flow-y group-has-[img]:md:py-900 prose-p:text-current/70 order-2 prose-p:max-w-[75ch] {{ settings.flip_content == true ? 'md:pl-gutter' : 'md:order-1 md:pr-gutter' }}">
+        {{ text }}
+        <div class="flow-space-700">
+            {{ links }}
+            {{ partial:components/btn outline="true" color="dark" }}
+            {{ /links }}
+        </div>
+    </div>
+    {{ if media }}
+    <div class="relative h-full min-h-[20rem] order-1 {{ settings.flip_content == true ? '' : 'md:order-2' }}">
+        {{ partial:components/image :imagePath="media" w="800" h="600" class="absolute inset-0 w-full h-full object-cover" }}
+    </div>
+    {{ endif }}
+</section>

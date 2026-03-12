@@ -1,0 +1,62 @@
+title: Page
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        display: 'Top banner'
+        fields:
+          -
+            handle: headline
+            field:
+              type: text
+              display: Headline
+          -
+            handle: text
+            field:
+              buttons:
+                - bold
+                - italic
+                - removeformat
+                - anchor
+              container: assets
+              remove_empty_nodes: false
+              type: bard
+              display: Text
+          -
+            handle: featured_media
+            field:
+              container: assets
+              max_files: 1
+              type: assets
+              display: 'Featured media'
+      -
+        display: 'Page sections'
+        fields:
+          -
+            import: page_sections
+      -
+        display: 'New Section'
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              required: true
+              validate:
+                - required
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate: 'max:200'
+          -
+            handle: nav_highlight
+            field:
+              type: toggle
+              display: 'Nav highlight'

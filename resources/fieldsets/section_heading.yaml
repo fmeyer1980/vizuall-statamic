@@ -1,0 +1,20 @@
+title: 'Section heading'
+fields:
+  -
+    handle: headline
+    field:
+      type: text
+      display: Headline
+  -
+    handle: text
+    field:
+      buttons:
+        - bold
+        - italic
+        - removeformat
+        - anchor
+      toolbar_mode: floating
+      container: assets
+      remove_empty_nodes: false
+      type: bard
+      display: Text

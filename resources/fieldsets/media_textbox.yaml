@@ -1,0 +1,65 @@
+title: 'Media textbox'
+fields:
+  -
+    handle: text
+    field:
+      buttons:
+        - h2
+        - h3
+        - bold
+        - italic
+        - unorderedlist
+        - orderedlist
+        - removeformat
+        - quote
+        - anchor
+        - 'Large text'
+        - color
+      container: assets
+      remove_empty_nodes: false
+      type: bard
+      display: Text
+  -
+    import: links
+  -
+    handle: media
+    field:
+      container: assets
+      max_files: 1
+      type: assets
+      display: Media
+  -
+    handle: show_settings
+    field:
+      type: revealer
+      display: 'Show settings'
+  -
+    handle: settings
+    field:
+      type: group
+      display: Settings
+      if:
+        show_settings: 'equals true'
+      fields:
+        -
+          handle: color
+          field: common_fields.color
+        -
+          handle: pt
+          field: common_fields.spacing
+          config:
+            display: 'Spacing top'
+            width: 50
+        -
+          handle: pb
+          field: common_fields.spacing
+          config:
+            display: 'Spacing bottom'
+            width: 50
+        -
+          handle: flip_content
+          field:
+            type: toggle
+            display: 'Flip content'
+            if:
+              $parent.media: 'not empty'

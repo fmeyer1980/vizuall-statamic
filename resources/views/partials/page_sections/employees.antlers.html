@@ -1,0 +1,7 @@
+<section class="wrapper py-lg">
+    <ul class="auto-grid auto-grid-md gap-gutter">
+        {{ collection from="employees" }}
+            {{ partial:components/employee_card show_contact="true" }}
+        {{ /collection }}
+    </ul>
+</section>

@@ -1,0 +1,220 @@
+html{
+    scroll-behavior: smooth;
+}
+
+body {
+  text-rendering: optimizeSpeed;
+  -webkit-text-size-adjust: 100%;
+  font-variant-ligatures: none;
+  -webkit-font-variant-ligatures: none;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-shadow: rgba(0, 0, 0, 0.01) 0 0 1px;
+}
+
+@view-transition {
+  navigation: auto;
+}
+
+
+@media (prefers-reduced-motion) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+      animation: none !important;
+  }
+}
+
+[x-cloak] { display: none !important; }
+
+/* Change Autocomplete styles in Chrome*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+-webkit-text-fill-color: var(--color-dark-shade);
+-webkit-box-shadow: 0 0 0px 1000px rgba(0, 0, 0, 0) inset;
+transition: background-color 5000s ease-in-out 0s;
+}
+
+::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+.link-parent::after{
+  position: absolute;
+  content: "";
+  inset: 0;
+  z-index: 10;
+}
+
+
+input[type=text], input[type=email], textarea, select{
+      appearance: none;
+      background-color: var(--color-white);
+      color: var(--color-dark);
+      padding-inline: 1.2em;
+      padding-block: .9em;
+
+      line-height: 1;
+      font-size: var(--size-sm);
+      width: 100%;
+      border: 0px;
+      border-radius: var(--radius-md);
+      @apply appearance-none focus:outline-primary focus:outline-1;
+
+      &::placeholder {
+        color: inherit;
+        opacity: .7;
+      }
+  }
+
+textarea{
+  min-height: 5rem;
+}
+
+
+button{
+  cursor: pointer;
+}
+
+.border-l-gutter{
+  border-left: solid var(--gutter);
+}
+
+.border-r-gutter{
+  border-right: solid var(--gutter);
+}
+
+.case-card{
+  @apply lg:col-span-3 @container;
+}
+
+.case-card:not([style]):first-child ~ .case-card, 
+.case-card[style] + .case-card:not([style]) ~ .case-card{
+  @apply col-span-1 @container-normal;
+
+}
+
+.split-gap-none {
+  --split-gap: 0px;
+}
+.split-gap-xs {
+  --split-gap: var(--size-300);
+}
+.split-gap-sm {
+  --split-gap: var(--size-500);
+}
+.split-gap-md {
+  --split-gap: var(--size-700);
+}
+.split-gap-lg {
+  --split-gap: var(--size-900);
+}
+.split-gap-xl {
+  --split-gap: var(--size-xl);
+}
+.auto-grid-xs {
+  --auto-grid-size: 8rem;
+}
+.auto-grid-sm {
+  --auto-grid-size: 12rem;
+}
+
+.auto-grid-md {
+  --auto-grid-size: 15rem;
+}
+
+.auto-grid-lg {
+  --auto-grid-size: 20rem;
+}
+
+.auto-grid-xl {
+  --auto-grid-size: 25rem;
+}
+
+.auto-grid-xxl {
+  --auto-grid-size: 30rem;
+}
+
+.flow-space-none {
+  --flow-space: 0px;
+}
+
+.flow-space-05em {
+  --flow-space: 0.5em;
+}
+.flow-space-075em {
+  --flow-space: 0.75em;
+}
+.flow-space-1em {
+  --flow-space: 1em;
+}
+.flow-space-2em {
+  --flow-space: 2em;
+}
+.flow-space-1-5em {
+  --flow-space: 1.5em;
+}
+.flow-space-none {
+  --flow-space: 0px;
+}
+.flow-space-xxs {
+  --flow-space: var(--size-xxs);
+}
+.flow-space-xs {
+  --flow-space: var(--size-xs);
+}
+.flow-space-sm {
+  --flow-space: var(--size-sm);
+}
+.flow-space-100 {
+  --flow-space: var(--size-100);
+}
+.flow-space-200 {
+  --flow-space: var(--size-200);
+}
+.flow-space-300 {
+  --flow-space: var(--size-300);
+}
+.flow-space-400 {
+  --flow-space: var(--size-400);
+}
+.flow-space-500 {
+  --flow-space: var(--size-500);
+}
+.flow-space-600 {
+  --flow-space: var(--size-600);
+}
+.flow-space-600 {
+  --flow-space: var(--size-600);
+}
+.flow-space-650 {
+  --flow-space: var(--size-650);
+}
+.flow-space-700 {
+  --flow-space: var(--size-700);
+}
+.flow-space-800 {
+  --flow-space: var(--size-800);
+}
+.flow-space-900 {
+  --flow-space: var(--size-900);
+}
+.flow-space-lg {
+  --flow-space: var(--size-lg);
+}
+.flow-space-xl {
+  --flow-space: var(--size-xl);
+}
+.flow-space-xxl {
+  --flow-space: var(--size-xxl);
+}
+.flow-space-gutter {
+  --flow-space: var(--gutter);
+}

@@ -1,0 +1,71 @@
+{{ xxlAspectRatio = switch(
+    (xxlRatio == true) => xxlRatio,
+    (xlRatio == true) => xlRatio,
+    (lgRatio == true) => lgRatio,
+    (mdRatio == true) => mdRatio,
+    (smRatio == true) => smRatio,
+    () => ratio
+) }}
+
+{{ xlAspectRatio = switch(
+    (xlRatio == true) => xlRatio,
+    (lgRatio == true) => lgRatio,
+    (mdRatio == true) => mdRatio,
+    (smRatio == true) => smRatio,
+    () => ratio
+) }}
+
+{{ lgAspectRatio = switch(
+    (lgRatio == true) => lgRatio,
+    (mdRatio == true) => mdRatio,
+    (smRatio == true) => smRatio,
+    () => ratio
+) }}
+
+{{ mdAspectRatio = switch(
+    (mdRatio == true) => mdRatio,
+    (smRatio == true) => smRatio,
+    () => ratio
+) }}
+
+
+<picture class="{{ class }}">
+
+    <source 
+    width="1536" 
+    height="{{ '1536' | divide:16 | multiply:{{ xxlAspectRatio or '9'}} }}" 
+    srcset="{{ glide:imagePath quality="70" fit="crop_focal" format="webp" width="1536" height="{{ '1536' | divide:16 | multiply:{{ xxlAspectRatio or '9'}} }}" }} 1x, {{ glide:imagePath quality="50" fit="crop_focal" format="webp" dpr="2" width="1536" height="{{ '1536' | divide:16 | multiply:{{ xxlAspectRatio or '9'}} }}" }} 2x" media="(min-width: 1536px)">
+    
+    <source 
+    width="1280" 
+    height="{{ '1280' | divide:16 | multiply:{{ xlAspectRatio or '9'}} }}" 
+    srcset="{{ glide:imagePath quality="70" fit="crop_focal" format="webp" width="1280" height="{{ '1280' | divide:16 | multiply:{{ xlAspectRatio or '9'}} }}" }} 1x, {{ glide:imagePath quality="50" fit="crop_focal" format="webp" dpr="2" width="1280" height="{{ '1280' | divide:16 | multiply:{{ xlAspectRatio or '9'}} }}" }} 2x" media="(min-width: 1280px)">
+
+    <source 
+    width="1024" height="{{ '1024' | divide:16 | multiply:{{ lgAspectRatio or '9'}} }}" 
+    srcset="{{ glide:imagePath quality="70" fit="crop_focal" format="webp" width="1024" height="{{ '1024' | divide:16 | multiply:{{ lgAspectRatio or '9'}} }}" }} 1x, {{ glide:imagePath quality="50" fit="crop_focal" format="webp" dpr="2" width="1024" height="{{ '1024' | divide:16 | multiply:{{ lgAspectRatio or '9'}} }}" }} 2x" media="(min-width: 1024px)">
+
+    <source 
+    width="768" height="{{ '768' | divide:16 | multiply:{{ mdAspectRatio or '9'}} }}" 
+    srcset="{{ glide:imagePath quality="70" fit="crop_focal" format="webp" width="768" height="{{ '768' | divide:16 | multiply:{{ mdAspectRatio or '9'}} }}" }} 1x, {{ glide:imagePath quality="50" fit="crop_focal" format="webp" dpr="2" width="768" height="{{ '768' | divide:16 | multiply:{{ mdAspectRatio or '9'}} }}" }} 2x" media="(min-width: 768px)">
+
+    <source 
+    width="640" height="{{ '640' | divide:16 | multiply:{{ smAspectRatio ? smAspectRatio : ratio or '9'}} }}" 
+    srcset="{{ glide:imagePath quality="70" fit="crop_focal" format="webp" width="640" height="{{ '640' | divide:16 | multiply:{{ smAspectRatio ? smAspectRatio : ratio or '9'}} }}" }} 1x, {{ glide:imagePath quality="50" fit="crop_focal" format="webp" dpr="2" width="640" height="{{ '640' | divide:16 | multiply:{{ smAspectRatio ? smAspectRatio : ratio or '9'}} }}" }} 2x" media="(min-width: 640px)">
+
+    <source 
+    width="480" height="{{ '480' | divide:16 | multiply:{{ ratio or '9'}} }}" 
+    srcset="{{ glide:imagePath quality="70" fit="crop_focal" format="webp" width="480" height="{{ '480' | divide:16 | multiply:{{ ratio or '9'}} }}" }} 1x, {{ glide:imagePath quality="50" fit="crop_focal" format="webp" dpr="2" width="480" height="{{ '480' | divide:16 | multiply:{{ ratio or '9'}} }}" }} 2x">
+
+    <img 
+        class="w-full h-full object-cover {{ flip_image ?= 'scale-x-[-1]' }}"
+        width="480" height="{{ '480' | divide:16 | multiply:{{ ratio or '9'}} }}"
+        loading="{{ loading ? loading : 'lazy'  }}"
+        src="{{ glide:imagePath quality="70" fit="crop_focal" format="webp" width="480" height="{{ '480' | divide:16 | multiply:{{ ratio or '9'}} }}" }}"
+        alt="{{ imagePath:alt }}
+    ">
+</picture>
+
+
+
+

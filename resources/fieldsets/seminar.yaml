@@ -1,0 +1,55 @@
+title: Seminar
+fields:
+  -
+    handle: text
+    field: common_fields.richtext
+    config:
+      buttons:
+        - h2
+        - h3
+        - bold
+        - italic
+        - unorderedlist
+        - orderedlist
+        - removeformat
+        - quote
+        - anchor
+        - 'Large text'
+        - color
+      display: Text
+  -
+    handle: information
+    field:
+      type: grid
+      display: Information
+      fields:
+        -
+          handle: title
+          field:
+            type: text
+            display: Title
+        -
+          handle: text
+          field:
+            type: text
+            display: Text
+  -
+    import: links
+  -
+    handle: teacher
+    field:
+      type: group
+      display: Teacher
+      fields:
+        -
+          handle: headline
+          field:
+            type: text
+            display: Headline
+        -
+          handle: list
+          field:
+            collections:
+              - employees
+            type: entries
+            display: List

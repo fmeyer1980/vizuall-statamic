@@ -1,0 +1,21 @@
+<section class="testimonials wrapper py-lg space-y-gutter">
+    {{ partial:components/section_heading }}
+    <ul class="testimonials__carousel">
+        {{ list }}
+            <li class="@container  prose-p:text-current/70">
+                <span class="citat text-[40cqi] font-bold">“</span>
+                <div class="text-sm">
+                    {{ text }}
+                </div>
+                <div class="flex items-center gap-400 border-y border-dark-shade/8 py-500">
+                    {{ partial:components/image :imagePath="profile_image" w="80" h="80" class=" rounded-full size-900" }}
+                    <div class="space-y-0.5">
+                        <h3 class="text-300">{{ name }}</h3>
+                        <p class="text-xs">{{ position }}</p>
+                    </div>
+                </div>
+                {{ partial:components/image :imagePath="logo" w="auto" h="80" class="h-900 w-auto justify-self-center" }}
+            </li>
+        {{ /list }}
+    </ul>
+</section>

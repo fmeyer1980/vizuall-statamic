@@ -1,0 +1,548 @@
+title: 'Common fields'
+fields:
+  -
+    handle: color
+    field:
+      swatches:
+        - var(--primary-glare)
+        - var(--primary)
+        - var(--primary-shade)
+        - var(--light-glare)
+        - var(--light)
+        - var(--light-shade)
+        - var(--dark-glare)
+        - var(--dark)
+        - var(--dark-shade)
+        - var(--test-color)
+      type: color
+      display: Color
+  -
+    handle: font_size
+    field:
+      options:
+        -
+          key: text-100
+          value: '100'
+        -
+          key: text-200
+          value: '200'
+        -
+          key: text-300
+          value: '300'
+        -
+          key: text-400
+          value: '400'
+        -
+          key: text-500
+          value: '500'
+        -
+          key: text-600
+          value: '600'
+        -
+          key: text-700
+          value: '700'
+        -
+          key: text-800
+          value: '800'
+        -
+          key: text-900
+          value: '900'
+      type: select
+      display: 'Font size'
+  -
+    handle: sections_colors
+    field:
+      options:
+        -
+          key: primary
+          value: Primary
+        -
+          key: secondary
+          value: Secondary
+        -
+          key: tertiary
+          value: Tertiary
+        -
+          key: white
+          value: Hvid
+        -
+          key: light-glare
+          value: 'Lys grå'
+        -
+          key: gray
+          value: Grå
+        -
+          key: dark
+          value: Mørk
+        -
+          key: dark-gray
+          value: 'Mørke grå'
+        -
+          key: red
+          value: red
+      type: select
+      display: 'Sections colors'
+      default: primary
+  -
+    handle: simple_text
+    field:
+      buttons:
+        - bold
+        - italic
+        - removeformat
+        - anchor
+      toolbar_mode: floating
+      remove_empty_nodes: false
+      type: bard
+      display: 'Simple text'
+  -
+    handle: section_headline
+    field:
+      buttons:
+        - h2
+        - bold
+        - italic
+        - removeformat
+      remove_empty_nodes: false
+      type: bard
+      display: 'Section headline'
+  -
+    handle: font_family
+    field:
+      options:
+        -
+          key: Arial
+          value: Arial
+        -
+          key: Poppins
+          value: Poppins
+        -
+          key: Roboto
+          value: Roboto
+        -
+          key: Montserrat
+          value: Montserrat
+        -
+          key: SourceSerifPro
+          value: 'Source Serif Pro'
+        -
+          key: Inter
+          value: Inter
+        -
+          key: Oswald
+          value: Oswald
+        -
+          key: Merriweather
+          value: Merriweather
+      type: select
+      display: 'Font family'
+      default: Arial
+  -
+    handle: opacity
+    field:
+      options:
+        -
+          key: opacity-0
+          value: '0'
+        -
+          key: opacity-10
+          value: '10'
+        -
+          key: opacity-20
+          value: '20'
+        -
+          key: opacity-30
+          value: '30'
+        -
+          key: opacity-40
+          value: '40'
+        -
+          key: opacity-50
+          value: '50'
+        -
+          key: opacity-60
+          value: '60'
+        -
+          key: opacity-70
+          value: '70'
+        -
+          key: opacity-80
+          value: '80'
+        -
+          key: opacity-90
+          value: '90'
+        -
+          key: opacity-100
+          value: '100'
+      type: select
+      display: Opacity
+      default: opacity-50
+  -
+    handle: gradient
+    field:
+      type: group
+      display: Gradient
+      fields:
+        -
+          handle: direction
+          field:
+            options:
+              -
+                key: left
+                value: Left
+              -
+                key: right
+                value: Right
+              -
+                key: top
+                value: Top
+              -
+                key: bottom
+                value: Bottom
+            type: select
+            display: Direction
+            default: left
+        -
+          handle: colors
+          field:
+            add_row: 'Add color'
+            max_rows: 3
+            type: grid
+            display: Colors
+            min_rows: 2
+            fields:
+              -
+                handle: color
+                field: common.sections_colors
+                config:
+                  display: Color
+                  width: 50
+              -
+                handle: opacity
+                field: common.opacity
+                config:
+                  width: 50
+  -
+    handle: bg_color
+    field:
+      type: group
+      display: 'Bg color'
+      fields:
+        -
+          handle: colors
+          field: common.sections_colors
+          config:
+            display: Colors
+            width: 33
+        -
+          handle: opacity
+          field: common.opacity
+          config:
+            width: 66
+  -
+    handle: overlay
+    field:
+      type: group
+      display: Overlay
+      fields:
+        -
+          handle: overlay_type
+          field:
+            options:
+              -
+                key: solid
+                value: 'Solid color'
+              -
+                key: gradient
+                value: Gradient
+            default: solid
+            type: button_group
+            display: 'Overlay type'
+        -
+          handle: bg_color
+          field: common.bg_color
+          config:
+            if:
+              overlay_type: 'equals solid'
+        -
+          handle: direction
+          field:
+            options:
+              -
+                key: l
+                value: Left
+              -
+                key: r
+                value: Right
+              -
+                key: t
+                value: Top
+              -
+                key: b
+                value: Bottom
+            default: l
+            type: select
+            display: Direction
+            if:
+              overlay_type: 'equals gradient'
+        -
+          handle: gradient
+          field:
+            type: grid
+            display: Gradient
+            max_rows: 3
+            min_rows: 1
+            fields:
+              -
+                handle: color
+                field:
+                  options:
+                    -
+                      key: dark-shade
+                      value: Dark
+                    -
+                      key: light-glare
+                      value: Light
+                    -
+                      key: primary
+                      value: Primary
+                    -
+                      key: secondary
+                      value: Secondary
+                  type: select
+                  display: Color
+                  width: 50
+                  default: dark-shade
+              -
+                handle: opacity
+                field: common.opacity
+                config:
+                  width: 50
+  -
+    handle: spacing
+    field:
+      options:
+        -
+          key: 0
+          value: None
+        -
+          key: 400
+          value: XS
+        -
+          key: 700
+          value: small
+        -
+          key: 900
+          value: Medium
+        -
+          key: lg
+          value: Large
+        -
+          key: xl
+          value: XL
+        -
+          key: xxl
+          value: XXL
+        -
+          key: huge
+          value: Huge
+      default: '700'
+      type: select
+      display: Spacing
+  -
+    handle: overlay_color
+    field:
+      type: grid
+      display: 'Overlay color'
+      add_row: 'Add color'
+      max_rows: 3
+      min_rows: 1
+      fields:
+        -
+          handle: color
+          field:
+            options:
+              -
+                key: dark-shade
+                value: Dark
+              -
+                key: light-glare
+                value: Light
+              -
+                key: primary
+                value: Primary
+              -
+                key: secondary
+                value: Secondary
+              -
+                key: tertiary
+                value: Tertiary
+            default: dark
+            type: select
+            display: Color
+            width: 50
+        -
+          handle: opacity
+          field: common.opacity
+          config:
+            width: 50
+  -
+    handle: heading_text
+    field:
+      buttons:
+        - h1
+        - h2
+        - bold
+        - italic
+        - removeformat
+        - anchor
+        - alignleft
+        - aligncenter
+        - alignright
+        - title_text
+        - primary_color
+        - large_text
+        - bts_paragraph
+        - secondary_color
+        - tertiary_color
+        - uppercase
+        - tracking
+        - text_width_small
+        - text_width_medium
+        - text_width_large
+        - text_width_xl
+        - opacity_60
+        - opacity_70
+        - opacity_80
+        - opacity_90
+        - text_100
+        - text_200
+        - text_300
+        - text_400
+        - text_500
+        - text_600
+        - text_700
+        - text_800
+        - text_900
+        - bts_styles
+      toolbar_mode: floating
+      remove_empty_nodes: false
+      type: bard
+      display: 'Heading text'
+      bts_styles:
+        - h1
+        - h2
+        - text_100
+        - text_200
+        - text_300
+        - text_400
+        - opacity_60
+        - opacity_70
+        - opacity_80
+        - opacity_90
+        - text_500
+        - text_600
+        - text_700
+        - text_800
+        - text_900
+        - text_width_large
+        - text_width_medium
+        - text_width_small
+        - text_width_xl
+  -
+    handle: font_weight
+    field:
+      options:
+        -
+          key: font-regular
+          value: Regular
+        -
+          key: font-medium
+          value: Medium
+        -
+          key: font-semibold
+          value: Semibold
+        -
+          key: font-bold
+          value: Bold
+      default: font-regular
+      type: select
+      display: 'Font weight'
+  -
+    handle: line_height
+    field:
+      options:
+        -
+          key: leading-none
+          value: 1%
+        -
+          key: leading-flat
+          value: 1.15%
+        -
+          key: leading-tight
+          value: 1.25%
+        -
+          key: leading-snug
+          value: 1.375%
+        -
+          key: leading-normal
+          value: '1.5'
+        -
+          key: leading-relaxed
+          value: 1.625%
+        -
+          key: leading-loose
+          value: 2%
+      default: leading-normal
+      type: select
+      display: 'Line height'
+  -
+    handle: position
+    field:
+      options:
+        -
+          key: relative
+          value: Normal
+        -
+          key: fixed
+          value: Fixed
+        -
+          key: sticky
+          value: Sticky
+      type: button_group
+      display: Position
+      default: relative
+  -
+    handle: header_content
+    field:
+      buttons:
+        - h1
+        - bold
+        - italic
+        - removeformat
+        - anchor
+        - bts_paragraph
+        - color
+      toolbar_mode: floating
+      container: assets
+      remove_empty_nodes: false
+      type: bard
+      display: 'Header content'
+  -
+    handle: richtext
+    field:
+      buttons:
+        - h2
+        - h3
+        - bold
+        - italic
+        - unorderedlist
+        - orderedlist
+        - removeformat
+        - quote
+        - anchor
+        - color
+      container: assets
+      remove_empty_nodes: false
+      type: bard
+      display: Richtext

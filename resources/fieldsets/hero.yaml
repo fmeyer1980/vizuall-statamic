@@ -1,0 +1,68 @@
+title: Hero
+fields:
+  -
+    handle: heading
+    field:
+      buttons:
+        - h1
+        - h2
+        - bold
+        - italic
+        - removeformat
+        - color
+      toolbar_mode: floating
+      remove_empty_nodes: false
+      type: bard
+      display: Heading
+  -
+    handle: text
+    field:
+      buttons:
+        - bold
+        - italic
+        - unorderedlist
+        - removeformat
+        - anchor
+      toolbar_mode: floating
+      remove_empty_nodes: false
+      type: bard
+      display: Text
+  -
+    import: links
+  -
+    handle: image
+    field:
+      container: assets
+      max_files: 1
+      type: assets
+      display: Image
+  -
+    handle: show_settings
+    field:
+      type: revealer
+      display: 'Show settings'
+  -
+    handle: settings
+    field:
+      type: group
+      display: Settings
+      if:
+        show_settings: 'equals true'
+      fields:
+        -
+          handle: bg_color
+          field: common_fields.sections_colors
+          config:
+            display: 'Baggrundfarve'
+        -
+          handle: pt
+          field: common_fields.spacing
+          config:
+            display: 'Spacing top'
+            width: 50
+        -
+          handle: pb
+          field: common_fields.spacing
+          config:
+            display: 'Spacing bottom'
+            width: 50

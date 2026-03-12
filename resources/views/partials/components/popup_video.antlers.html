@@ -1,0 +1,17 @@
+<div
+    x-cloak
+    x-show="popup"
+    @keyup.escape="popup = false" 
+    class="popup fixed inset-0 bg-dark-shade/80 backdrop-blur-md z-[99] flex justify-center items-center"
+    x-transition:enter="transition ease-out duration-300"
+    x-transition:enter-start="opacity-0"
+    x-transition:enter-end="opacity-100"
+    x-transition:leave="transition ease-in duration-300"
+    x-transition:leave-start="opacity-100"
+    x-transition:leave-end="opacity-0"
+>
+    <div class="relative p-1.5 bg-light-glare w-[90%] max-w-[var(--container-width)] rounded-md shadow-custom_dark" x-on:click.outside="popup = false">
+        <button class="absolute top-400 right-400 z-10 w-700 h-700 bg-dark-shade text-light-glare flex items-center rounded-[3px] justify-center focus:border hover:focus:border-dark-shade focus:border-light-glare hover:bg-primary transition-colors duration-300" x-ref="popupCloseButton" x-on:click="popup = false">{{ svg src="close" class="h-[60%]" }}</button>
+        <video x-ref="video" x-effect="() => data.video && $el.load()" preload="auto" playsinline autoplay controls class="w-full h-full object-cover"><source :src="data.video" type="video/mp4"></video>
+    </div>
+</div>

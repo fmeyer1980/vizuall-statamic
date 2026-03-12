@@ -1,0 +1,28 @@
+{{ form:create :in="form_picker:handle" class="form grid grid-cols-12 gap-4 !text-inherit " :redirect="thanks_page_link:url" }}
+    {{ if (form:errors) }}
+        <p>Der var desværre noget der gik forkert:</p>
+        <ul>
+            {{ form:errors }}
+                <li>{{ value }}</li>
+            {{ /form:errors }}
+        </ul>
+    {{ /if }}
+    {{ fields }}
+        <div class="col-span-12 {{ width == '25' ?= 'md:col-span-3' }}{{ width == '33' ?= 'md:col-span-4' }}{{ width == '50' ?= 'md:col-span-6' }}{{ width == '66' ?= 'md:col-span-8' }}{{ width == '75' ?= 'md:col-span-9' }}{{ width == '100' ?= 'md:col-span-12' }}">
+            <label class="leading-none">
+                {{ display }} 
+                {{ if validate | contains:required }}
+                    <sup class="text-[1em] -top-[.2em]">*</sup>
+                {{ /if }}
+            </label>
+            <div class="py-1 w-full">{{ field }}</div>
+            {{ if error }}
+                <p class="text-gray-500">{{ error }}</p>
+            {{ /if }}
+        </div>
+    {{ /fields }}
+    <div class="col-span-12">
+        <button class="btn" data-type="solid-primary" type="submit">Send Besked</button>
+    </div>
+    <input type="text" name="adresse" class="hidden" />
+{{ /form:create }}

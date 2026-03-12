@@ -1,0 +1,23 @@
+<dialog 
+    x-cloak
+    x-show="showSearch" 
+    x-transition:enter="transition ease-out duration-300"
+    x-transition:enter-start="opacity-0"
+    x-transition:enter-end="opacity-100"
+    x-transition:leave="transition ease-in duration-300"
+    x-transition:leave-start="opacity-100"
+    x-transition:leave-end="opacity-0"
+    x-trap.noscroll="showSearch"
+    x-trap.inert="showSearch"
+    role="dialog"
+    x-htmldialog="showSearch = false"
+    class="backdrop:bg-black/60 w-full max-w-[40rem] mx-0 absolute top-xl left-1/2 -translate-x-1/2" 
+    id="search"
+    {{# :data-state="showSearch ? 'Åben' : 'Lukket'" #}}
+    >
+        <form class="bg-white p-gutter" action="search" @click.outside="showSearch = false">
+            <input name="q" type="text">
+            <button @click="showSearch = false">saas</button>
+        </form>
+
+</dialog>

@@ -1,0 +1,163 @@
+@source "../views";
+@source "../../content";
+@source "../../resources/svg/*";
+
+@layer theme, base, components, a, compositions, tokens, utilities ;
+
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+
+@import "./var" layer(a);
+@import "./base" layer(a);
+@import "./type" layer(a);
+@import "./btn" layer(a);
+
+@import "./colors" layer(a);
+
+@import "./blocks/testimonials" layer(a);
+
+@plugin "@tailwindcss/typography";
+
+@source inline("pt-{{100..900..100},lg,xl,xxl,huge}");
+@source inline("pb-{{100..900..100},lg,xl,xxl,huge}");
+
+@theme {
+    --color-*: initial;
+    --color-primary-glare: var(--primary-glare);
+    --color-primary: var(--primary);
+    --color-primary-shade: var(--primary-shade);
+    --color-white: #FFFFFF;
+    --color-light-glare: var(--light-glare);
+    --color-light: var(--light);
+    --color-light-shade: var(--light-shade);
+    --color-dark-glare: var(--dark-glare);
+    --color-dark: var(--dark);
+    --color-dark-shade: var(--dark-shade);
+    --color-black: #000000;
+
+
+    --text-*: initial;
+    --text-xxs: .8125rem;
+    --text-xs: .875rem;
+    --text-sm: .9375rem;
+    --text-base: 1rem;
+    --text-100: var(--size-100);
+    --text-200: var(--size-200);
+    --text-250: calc(var(--size-200) + 1px);
+    --text-300: var(--size-300);
+    --text-350: calc(var(--size-300) + 2px);
+    --text-400: var(--size-400);
+    --text-450: calc(var(--size-400) + 2px);
+    --text-500: var(--size-500);
+    --text-550: calc(var(--size-500) * 1.15);
+    --text-600: var(--size-600);
+    --text-650: calc(var(--size-600) * 1.15);
+    --text-700: var(--size-700);
+    --text-750: var(--size-750);
+    --text-800: var(--size-800);
+    --text-900: var(--size-900);
+    --text-950: var(--size-950);
+
+    --spacing-xxs: .8125rem;
+    --spacing-xs: .875rem;
+    --spacing-sm: .9375rem;
+    --spacing-100: var(--size-100);
+    --spacing-200: var(--size-200);
+    --spacing-250: calc(var(--size-200) + 1px);
+    --spacing-300: var(--size-300);
+    --spacing-350: calc(var(--size-300) + 1px);
+    --spacing-400: var(--size-400);
+    --spacing-450: calc(var(--size-400) + 2px);
+    --spacing-500: var(--size-500);
+    --spacing-550: calc(var(--size-500) * 1.15);
+    --spacing-600: var(--size-600);
+    --spacing-650: calc(var(--size-600) * 1.15);
+    --spacing-700: var(--size-700);
+    --spacing-750: calc(var(--size-700) * 1.15);
+    --spacing-800: var(--size-800);
+    --spacing-850: calc(var(--size-800) * 1.2);
+    --spacing-900: var(--size-900);
+    --spacing-950: var(--size-950);
+    --spacing-lg: var(--size-lg);
+    --spacing-xl: var(--size-xl);
+    --spacing-xxl: var(--size-xxl);
+    --spacing-huge: var(--size-huge);
+    --spacing-container: var(--container-padding);
+    --spacing-gutter: var(--gutter);
+    --0.3em: .3em;
+    --0.5em: .5em;
+    --0.8em: .8em;
+    --1em: 1em;
+    --1.5em: 1.5em;
+    --2em: 2em;
+    --2.5em: 2.5em;
+    --3em: 3em;
+
+    --leading-*: initial;
+    --leading-none: 1;
+    --leading-flat: 1.1;
+    --leading-tight: 1.25;
+    --leading-relax: 1.40;
+    --leading-normal: 1.5;
+    --leading-loos: 1.8;
+
+    --font-*: initial;
+    --font-base: 'AtlassianSans','Helvetica','Arial','Lucida','sans-serif';
+    --font-heading: 'Borna','Helvetica','Arial','Lucida','sans-serif';
+    --font-symbols: 'Iconfont', sans-serif;
+
+    --animate-fade-in: fadeIn 700ms cubic-bezier(.83,0,.17,1) both;
+    --animate-fade-in-left: fadeInLeft 400ms ease-in both;
+    --animate-fade-in-right: fadeInRight 400ms ease-in both;
+    --animate-fade-in-up: fadeInUp 400ms ease-in both;
+
+    --breakpoint-2xl: 87rem;
+}
+
+@utility wrapper {
+    padding-left: calc(((100% - var(--container-width)) / 2) - var(--gutter));
+    padding-right: calc(((100% - var(--container-width)) / 2) - var(--gutter));
+    border-left: var(--gutter) solid transparent;
+    border-right: var(--gutter) solid transparent;
+}
+
+@utility flow-y {
+    & > * + *{
+        margin-block-start: var(--flow-space, 1em);
+    }
+}
+
+@utility flow-x {
+    & > * + *{
+        margin-inline-start: var(--flow-space, 1em);
+    }
+}
+
+@utility full-bleed {
+    width: 100vw;
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
+@utility image-overlay {
+    position: relative;
+    &::after{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        mix-blend-mode: color;
+        background-color: var(--color-primary);
+        opacity: .20;
+    }
+}
+
+@utility auto-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(var(--auto-grid-size, var(--spacing-900)), 1fr));
+}

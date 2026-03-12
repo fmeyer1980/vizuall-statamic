@@ -1,0 +1,45 @@
+title: Case
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              required: true
+              validate:
+                - required
+          -
+            handle: teaser
+            field:
+              buttons:
+                - bold
+                - italic
+                - removeformat
+                - anchor
+              toolbar_mode: floating
+              container: assets
+              remove_empty_nodes: false
+              type: bard
+              display: Teaser
+          -
+            handle: featured_media
+            field:
+              container: assets
+              max_files: 1
+              type: assets
+              display: 'Featured media'
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate: 'max:200'

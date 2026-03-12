@@ -1,0 +1,20 @@
+name: Admin
+super: true
+id: c57f1b21-cfae-4dbe-bc3a-58efc89db28a
+password_hash: $2y$12$iUy8aHOh6UNkn6qXu1gjGOEZ7Ar7UdFBnKZXZvxCOg3gKVmaKxPOi
+preferences:
+  collections:
+    pages:
+      view: tree
+      after_save: listing
+    testimonials:
+      view: list
+    cases:
+      view: list
+    employees:
+      view: list
+    blog:
+      view: list
+  assets:
+    assets:
+      mode: grid

@@ -1,0 +1,26 @@
+
+<div class="auto-grid auto-grid-md gap-400 my-[2em]">
+    {{ employees_list }}
+        <div class="flex flex-col">
+            <div class="bg-dark text-light-glare image-overlay {{ employees_list | count == '3' ? 'aspect-[{{ employees_list | count == '3' ? '400' : '600' }}/{{ employees_list | count == '3' ? '290' : '350' }}]' : 'aspect-video' }} {{ if profile_image == empty }}grid place-items-center{{ /if }}">
+                {{ if profile_image }}
+                    {{ partial:components/image :imagePath="profile_image" width="{{ employees_list | count == '3' ? '400' : '600' }}" height="{{ employees_list | count == '3' ? '290' : '350' }}" lazy="true" class="h-full object-cover" }}
+                {{ else }}
+                    <p class="h5">Billede kommer</p>
+                {{ /if }}
+            </div>
+            <div class="p-600 grow box flex flex-col bg-light">
+                <p class="h4 md:text-250">{{ title }}</p>
+                {{ if position }}
+                    <p class="opacity-70 text-[15px]">{{ position }}</p>
+                {{ /if }}
+                {{ if phone or email }}
+                    <ul class="text-xs pt-2.5 mt-auto space-y-0.5">
+                        {{ if phone }}<li class="flex items-center space-x-2">{{ svg src="phone" class="w-[.9em] mt-[.2em]" }}<a class="font-semibold underline hover:text-primary-shade transition-colors" href="tel:{{ phone }}">{{ phone }}</a></li>{{ /if }}
+                        {{ if email }}<li class="flex items-center space-x-2">{{ svg src="mail" class="w-[.9em] mt-[.2em]" }}<a class="font-semibold underline hover:text-primary-shade transition-colors" href="tel:{{ email }}">{{ email }}</a></li>{{ /if }}
+                    </ul>
+                {{ /if }}
+            </div>
+        </div>
+    {{ /employees_list }}
+</div>

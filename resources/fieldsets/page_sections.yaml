@@ -1,0 +1,50 @@
+title: 'Page sections'
+fields:
+  -
+    handle: page_sections
+    field:
+      collapse: accordion
+      type: replicator
+      display: 'Page sections'
+      sets:
+        items:
+          display: Items
+          sets:
+            featured_cases:
+              display: 'Featured cases'
+              fields:
+                -
+                  import: featured_cases
+            media_textbox:
+              display: 'Media textbox'
+              fields:
+                -
+                  import: media_textbox
+            seminar:
+              display: Seminar
+              fields:
+                -
+                  import: seminar
+            featured_testimonials:
+              display: 'Featured testimonials'
+              fields:
+                -
+                  handle: section_headline
+                  field: featured_cases.section_headline
+                -
+                  handle: list
+                  field:
+                    collections:
+                      - testimonials
+                    type: entries
+                    display: List
+            hero:
+              display: Hero
+              fields:
+                -
+                  import: hero
+            employees:
+              display: Employees
+              fields:
+                -
+                  import: employees

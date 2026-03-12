@@ -1,0 +1,8 @@
+
+{{ if page_sections }}
+    {{ page_sections }}
+        {{ if live_preview }}<div data-section-index="{{ index }}" data-section-type="{{ type }}">{{ endif }}
+            {{ partial src="page_sections/{{ type }}" typeClass="{type | slugify}" }}
+        {{ if live_preview }}</div>{{ endif }}
+    {{ /page_sections }}
+{{ endif }}

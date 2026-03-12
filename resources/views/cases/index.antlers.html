@@ -1,0 +1,14 @@
+<section class="wrapper py-lg">
+    <div class="prose-p:text-current/70 prose-p:max-w-[65ch] space-y-100">
+        <h1>Cases</h1>
+        <p>Få et indblik i en række forskellige udvalgte cases. Vi har hjulpet mange virksomheder med blandt andet hjemmesider, visuelle identiteter, branding, strategisk kommunikation og grafisk design.</p>
+    </div>
+    <div>
+        <ul>
+            {{ collection from="cases" }}
+                <li><a href="{{ url /}}">{{ title /}}</a></li>
+            {{ /collection }}
+        </ul>
+    </div>
+
+</section>

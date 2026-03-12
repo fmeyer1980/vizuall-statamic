@@ -1,0 +1,16 @@
+{{ number = switch(
+  (stars == '5') => '5',
+  (stars == '4') => '4',
+  (stars == '3') => '3',
+  (stars == '2') => '2',
+  () => '1'
+) }}
+
+<div class="flex gap-100 items-center{{ if last }} !mb-0{{ /if }}">
+  <ul class="flex gap-1 {{ class }}">
+      {{ loop :times="number" }}
+        <li>{{ svg src="trustpilot-icon" class="fill-current h-500" }}</li>
+      {{ /loop }}
+  </ul>
+  <a class="text-200 font-semibold" href="https://dk.trustpilot.com/{{ link_url }}">{{ link_text }}</a>
+</div>

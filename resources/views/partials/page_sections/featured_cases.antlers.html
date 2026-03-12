@@ -1,0 +1,17 @@
+<section class="wrapper space-y-gutter pb-lg">
+    {{ partial:components/section_heading }}
+    <ul class="grid sm:grid-cols-2 lg:grid-cols-6 gap-gutter">
+        {{ list }}
+        <li class="relative flex flex-col gap-400 group {{ if count <= 2 }}lg:col-span-3{{ else }}lg:col-span-2{{ /if }}">
+            <div class="order-2 space-y-1">
+                <h3 class="text-500"><a class="link-parent" href="{{ url }}">{{ title }}</a></h3>
+                <p class="opacity-70">{{ teaser | strip_tags | raw | safe_truncate(60, '...') }}</p>
+            </div>
+            <div class="aspect-video order-1 overflow-clip" style="view-transition-name: image_{{ id }};">
+                {{ partial:components/image :imagePath="featured_media" w="{160 | multiply(2)}" h="{90 | multiply(2)}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out" }}
+            </div>
+        </li>
+        {{ /list }}
+    </ul>
+    {{ partial:components/btn text="Se flere cases her" color="dark" outline="true" }}
+</section>

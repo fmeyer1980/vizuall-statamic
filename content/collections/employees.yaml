@@ -1,0 +1,16 @@
+title: Employees
+icon: collections
+template: default
+layout: layout
+revisions: false
+title_format: '{name}'
+slugs: false
+sort_dir: asc
+date_behavior:
+  past: null
+  future: null
+preview_targets:
+  -
+    label: Entry
+    url: '{permalink}'
+    refresh: true

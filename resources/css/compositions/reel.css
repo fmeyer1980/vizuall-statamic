@@ -1,0 +1,35 @@
+.reel {
+    display: flex;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+  
+    scroll-behavior: smooth;
+}
+
+.reel > * {
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    /* animation: reel-ani .1s ease forwards; */
+}
+
+.reel::-webkit-scrollbar {
+
+}
+
+.reel::-webkit-scrollbar-thumb {
+
+}
+
+
+@keyframes reel-ani {
+    0%{
+        scroll-snap-align: none;
+    }
+    100%{
+        scroll-snap-align: start;
+    }
+}
+
+::-webkit-scrollbar{
+    display: none;
+}

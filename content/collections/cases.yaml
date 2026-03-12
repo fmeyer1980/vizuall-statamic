@@ -1,0 +1,18 @@
+title: Cases
+icon: collections
+template: cases/show
+layout: layout
+mount: f738a753-30da-4db1-ba33-646272d82c35
+taxonomies:
+  - cases_categories
+revisions: false
+route: '/{mount}/{slug}/'
+sort_dir: asc
+date_behavior:
+  past: null
+  future: null
+preview_targets:
+  -
+    label: Entry
+    url: '{permalink}'
+    refresh: false

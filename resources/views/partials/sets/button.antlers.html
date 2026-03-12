@@ -1,0 +1,14 @@
+{{ links }}
+    {{ link_type = switch(
+        (color_select == 'primary' and type == 'solid') => "solid-primary",
+        (color_select == 'primary' and type == 'stroke') => "stroke-primary",
+        (color_select == 'secondary' and type == 'solid') => "solid-secondary",
+        (color_select == 'secondary' and type == 'stroke') => "stroke-secondary",
+        (color_select == 'light' and type == 'solid') => "solid-light",
+        (color_select == 'light' and type == 'stroke') => "stroke-light",
+        (color_select == 'dark' and type == 'solid') => "solid-dark",
+        (color_select == 'dark' and type == 'stroke') => "stroke-dark",
+        () => ""
+    ) }}
+    {{ partial:components/btn :linkType="link_type" :linkText="text" :linkIcon="icon" :linkUrl="url" class="!no-underline" }}
+{{ /links }}

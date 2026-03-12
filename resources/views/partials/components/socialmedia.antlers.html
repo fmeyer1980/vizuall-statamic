@@ -1,0 +1,9 @@
+<ul class="flex space-x-2 flow-space-500 ">
+    {{ site_settings:socialmedia_links }}
+        <li>
+            <a class="h-500 w-500 border grid place-items-center transition-colors {{ colorStyle }} hover:bg-primary-glare hover:text-light-glare hover:border-primary-glare" target="_blank" href="{{ prefix }}{{ handle }}" aria-label="{{ handle }}">
+                {{ svg src="socialmedia/{type}" class="h-1/2" }}
+            </a>
+        </li>
+    {{ /site_settings:socialmedia_links }}
+</ul>

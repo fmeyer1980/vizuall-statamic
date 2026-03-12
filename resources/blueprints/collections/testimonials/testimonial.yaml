@@ -1,0 +1,48 @@
+title: Testimonial
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: title
+            field:
+              type: hidden
+              required: false
+          -
+            handle: name
+            field:
+              type: text
+              display: Name
+          -
+            handle: position
+            field:
+              type: text
+              display: Position
+          -
+            handle: text
+            field:
+              buttons:
+                - bold
+                - italic
+                - removeformat
+              toolbar_mode: floating
+              container: assets
+              remove_empty_nodes: false
+              type: bard
+              display: Text
+          -
+            handle: profile_image
+            field:
+              container: assets
+              max_files: 1
+              type: assets
+              display: 'Profile Image'
+          -
+            handle: logo
+            field:
+              container: assets
+              max_files: 1
+              type: assets
+              display: Logo

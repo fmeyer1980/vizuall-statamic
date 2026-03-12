@@ -1,0 +1,21 @@
+title: Links
+fields:
+  -
+    handle: links
+    field:
+      type: grid
+      display: Links
+      fields:
+        -
+          handle: url
+          field:
+            type: link
+            display: Url
+        -
+          handle: text
+          field:
+            type: text
+            display: Text
+        -
+          handle: color
+          field: common_fields.color

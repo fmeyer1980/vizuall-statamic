@@ -1,0 +1,8 @@
+<section class="wrapper @container prose-headings:text-[clamp(2.4rem,8cqi,5rem)] py-xl flow-y prose-p:max-w-[50ch] prose-p:text-current/80">
+    {{ intro_text }}
+    {{ if (intro_media | ends_with('.mp4')) }}
+        <video class="flow-space-800 aspect-4/3 md:aspect-video w-full h-auto object-cover" loop muted autoplay src="{{ intro_media }}"></video>
+    {{ else }}
+        {{ partial:components/picture :imagePath="image" }}
+    {{ endif }}
+</section>

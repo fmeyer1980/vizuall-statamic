@@ -1,0 +1,13 @@
+{{ if type == "text" }}
+    {{ glide:batch width="700" quality="80" fit="crop_focal" format="webp" dpr="2" }}
+        {{ text | widont }}
+        {{ attrs }}
+    {{ /glide:batch }}
+
+
+{{ elseif type == "image" }}
+        <div class="custom-img-wrapper">
+            <img src="{{ url }}" alt="{{ alt }}" class="custom-img-class">
+        </div>
+    {{ /if }}
+

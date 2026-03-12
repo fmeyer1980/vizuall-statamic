@@ -1,0 +1,46 @@
+{{ _color = switch(
+    (color == 'dark') => 'bg-dark text-light-glare',
+    (color == 'primary') => 'bg-gradient-to-b from-light from-50% to-primary-glare',
+    () => 'bg-light'
+) }}
+
+
+<li class="relative group blur-load {{ size != 'small' ?= 'rounded-2xl overflow-clip' }} {{ class }}" x-data="{ open_video: false }" {{ if selectedBrand == true }}x-show="selectedBrand == 'alle'" {{ elseif selectedCategories == true }}x-show="['alle', {{ categories }}'{{ title | slugify }}'{{ ! last ?= ', ' }}{{ /categories }}].includes(selectedCategories)"{{ endif }}>
+    <div class="@container h-full min-h-[clamp(20rem,35cqi,32rem)] {{ size != 'small' ?=  _color }}">
+        <div class="flex flex-col @xl:grid {{ type == 'featured_cases' ? '@xl:grid-cols-2' : '@xl:grid-cols-[1fr_.7fr]'}} h-full">
+            <div class="{{ image_left == true ?= '@xl:order-1' }} {{ hide_image ?= 'hidden' }}  relative aspect-[6/4] @md:aspect-auto overflow-clip flex justify-center items-center bg-light  {{ size == 'small' ?=  'rounded-2xl' }}" style="background-image:url('{{ glide:featured_image :width="600 | divide(10) " :h="400 | divide(10)" fit="crop_focal" format="webp" quality="10" }}'); background-size: cover; background-position: center; view-transition-name: case-media-{{ title | slugify }};">
+                {{ if featured_image }}
+                    {{ partial:components/image :imagePath="featured_image" width="600" h="400" class="absolute inset-0 z-10 w-full h-full object-cover group-hover:scale-110 duration-500 group-hover:delay-100 {{ video ?= 'group-hover:opacity-0' }}" }}
+                {{ else }}
+                    <p>Billede kommer</p>
+                {{ endif }}
+                {{ if video }}
+                    <template x-if="open_video">
+                        <video loop="loop" muted loop="loop" preload="auto" playsinline autoplay class="absolute inset-0 z-0 w-full h-full object-cover" >
+                            <source src="{{ video }}" type="video/mp4">
+                        </video>
+                    </template>
+                {{ endif }}
+            </div>
+            <div class="[ content ] {{ size == 'small' ? 'pt-600' : 'p-800' }} flex flex-col justify-end items-start h-full @container">
+                {{ if qoute }}
+                    <div class="[ quote-wrapper ] space-y-400">
+                        {{ svg src="quote" class="opacity-20" }}
+                        <p class="text-[6cqi] leading-tight">{{ quote }}</p>
+                    </div>
+                    <div class="[ name ] leading-tight flex flex-col space-y-100">
+                  
+                        <span class="text-[9cqi]">{{ name }}</span>
+                    </div>
+                    
+                {{ else }}
+                    <div class="{{ size == 'small' ?= 'grow' }} flow-y flow-space-1em">
+                        <h3 class="text-400 @xl:text-500" >{{ title }}</h3>
+                        <p class="opacity-70 line-clamp-3 @xl:line-clamp-5">{{ teaser }}</p>
+                    </div>
+                {{ endif }}
+               <a class="btn mt-500 bg-light-shade group-hover:bg-primary link-parent" data-style="light" x-on:mouseenter="open_video = true" href="{{ url }}">Læs mere<span class="sr-only"> om {{ title | lower }}</span></a>
+            </div>
+        </div>
+    </div>
+</li>

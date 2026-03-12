@@ -1,0 +1,36 @@
+<header class="wrapper ">
+    <div class="flex justify-between py-600 border-b border-dark-shade/10">
+        <a href="/" aria-label="Gå til forsiden på {{ settings:site_name }}">
+            {{ svg src="logo" class="h-600 w-auto" aria-hidden="true" }}
+        </a>
+        <nav>
+            <menu class="flex items-center gap-[1.5em]">
+                {{ nav:collection:pages }}
+                    {{ if hide_in_main_menu != true }}
+                        <li class="relative group">
+                            {{ if last }}
+                                <a class="btn py-[.7em] px-[1.2em]" data-style="dark" href="{{ url }}">{{ title }}</a>
+                            {{ else }}
+                                <a class="font-semibold {{ is_current || is_parent ?= 'underline underline-offset-6' }}" href="{{ url }}">{{ title }}</a>
+                            {{ endif }}
+                            {{ if children }}
+                                <ul class="absolute min-w-max divide-y divide-dark-shade/10 top-700 opacity-0 bg-light py-400 px-600 pointer-events-none group-hover:opacity-100 translate-y-200 group-hover:translate-y-0 rounded-md group-hover:pointer-events-auto transition-all duration-300 ease-in-out before:w-full before:h-700 before:bg-transparent before:absolute before:-top-700 before:left-0 after:absolute after:-top-1.5 after:size-100 after:bg-light after:rotate-45">
+                                    {{ children }}
+                                    <li class="text-sm not-first:pt-3 not-last:pb-3">
+                                        <a class="flex flex-col {{ is_current ?= '' }}" href="{{ url }}">
+                                            <span class="font-semibold">{{ title }}</span>
+                                            {{ if headline }}
+                                                <span class="opacity-60 text-xxs max-w-[30ch] leading-tight line-clamp-1">{{ headline }}</span>
+                                            {{ endif }}
+                                        </a>
+                                    </li>
+                                    {{ /children }}
+                                </ul>
+                            {{ endif }}
+                        </li>
+                    {{ endif }}
+                {{ /nav:collection:pages }}
+            </menu>
+        </nav>
+    </div>
+</header>

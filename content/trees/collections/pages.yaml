@@ -1,0 +1,20 @@
+tree:
+  -
+    entry: home
+  -
+    entry: 6acdf103-106e-4551-b8fe-5540d5abbc74
+    children:
+      -
+        entry: 4dbd08e5-d5e1-4235-b31e-bf350cc79c8e
+      -
+        entry: b9507604-1f11-44a3-b56d-728fbcc56469
+      -
+        entry: 9fedd51b-b8ff-4f5b-83fe-234681405522
+  -
+    entry: f738a753-30da-4db1-ba33-646272d82c35
+  -
+    entry: 2f590639-4ec0-4623-9068-8ad672ca64bc
+  -
+    entry: 0e85e02d-f932-4e26-af51-9adf228798ea
+  -
+    entry: 8efe2cba-1669-48b2-8364-95a940baf74a

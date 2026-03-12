@@ -1,0 +1,16 @@
+.image-overlay {
+  position: relative;
+}
+.image-overlay::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  mix-blend-mode: color;
+  background-color: var(--color-primary);
+  opacity: .20;
+}

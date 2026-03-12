@@ -1,0 +1,9 @@
+{{ if type == "gallery" }}
+    <div class="gallery auto-grid auto-grid-xs gap-500 my-[2em]{{ if last }} !mb-0{{ /if }}">
+        {{ images }}
+            <a class="image-overlay block border-4 border-white shadow" href="{{ glide:url width="1600" height="1200" }}">
+                <img loading="lazy" class="w-full object-cover " src="{{ glide:url width="350" height="350" }}" alt="">
+            </a>
+        {{ /images }}
+    </div>
+{{ /if }}

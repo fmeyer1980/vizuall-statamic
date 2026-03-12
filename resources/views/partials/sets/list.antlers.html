@@ -1,0 +1,5 @@
+<ul class="space-y-[.8em] flow-space-600 {{ if last }} !mb-0{{ /if }}">
+    {{ list }}
+        <li class="flex items-center space-x-[.8em] leading-tight"><span class="size-[1.6em] bg-light shrink-0 flex items-center justify-center rounded-full">{{ svg src="checkmark" class="text-dark h-[1.2em]" }}</span><span class="opacity-60">{{ value }}</span></li>
+    {{ /list }}
+</ul>

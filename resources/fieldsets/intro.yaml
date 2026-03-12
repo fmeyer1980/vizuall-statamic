@@ -1,0 +1,24 @@
+title: Intro
+fields:
+  -
+    handle: text
+    field:
+      buttons:
+        - bold
+        - italic
+        - removeformat
+        - anchor
+        - h1
+        - color
+        - 'Large text'
+      container: assets
+      remove_empty_nodes: false
+      type: bard
+      display: Text
+  -
+    handle: media
+    field:
+      container: assets
+      max_files: 1
+      type: assets
+      display: Media

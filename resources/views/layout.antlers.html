@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="{{ site:short_locale }}">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noindex, nofollow">
+        <title>{{ title ?? site:name }}</title>
+        {{ vite src="resources/js/site.js|resources/css/site.css" }}
+        <script src="test"></script>
+        <script type="speculationrules">
+            {
+                "prerender": [{
+                "where": {
+                    "and": [
+                    { "href_matches": "/*" },
+                    { "not": {"href_matches": "/logout"}}
+                    ]
+                },
+                "eagerness": "moderate"
+                }]
+            }
+        </script>
+    </head>
+    <body class="bg-light-glare font-base text-dark-shade leading-normal">
+        {{ partial:site_head }}
+        <main class="">
+            {{ template_content }}
+        </main>
+        {{ partial:site_foot }}
+        {{ if live_preview }}
+            {{ partial:live_preview }}
+        {{ /if }}
+    </body>
+</html>

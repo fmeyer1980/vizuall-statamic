@@ -1,0 +1,138 @@
+{{#
+    Live Preview: Hot reload + bidirectional scroll-sync
+
+    Include this partial in your layout inside {{ if live_preview }}.
+
+    Features:
+    - Hot reload via Alpine.morph (no full page refresh)
+    - CP -> Preview: highlights the section/field/item being edited
+    - Preview -> CP: click any element to open its corresponding field
+
+    Usage in section templates:
+
+    Wrap field output with data-field="handle" to enable field-level sync:
+        <div data-field="content">{{ content }}</div>
+        <div data-field="image">{{ image }}</div>
+
+    For items inside a replicator field (e.g. links), use data-field-item on each item:
+        {{ links }}
+            <span data-field-item="{{ index }}" data-focus-field="text">
+                {{ text }}
+            </span>
+        {{ /links }}
+
+    data-focus-field="handle" specifies which nested field to focus in the CP
+    when clicking the item in the preview.
+#}}
+<style>
+    [data-field-item][data-field-active] {
+        outline: 2px solid #36b5f4;
+        outline-offset: 2px;
+        border-radius: 4px;
+        transition: outline-color 0.3s ease;
+    }
+    [data-field][data-field-active] {
+        outline: 2px solid #36b5f4;
+        outline-offset: -2px;
+        transition: outline-color 0.3s ease;
+    }
+    [data-section-active] > :first-child::after {
+        content: "";
+        pointer-events: none;
+        position: absolute;
+        inset: 0;
+        z-index: 999;
+        outline: 2px solid #36b5f4;
+        outline-offset: -2px;
+        transition: outline-color 0.3s ease;
+    }
+</style>
+<script>
+    let activeElement = null;
+
+    function clearHighlight() {
+        if (activeElement) {
+            activeElement.removeAttribute('data-field-active');
+            activeElement.removeAttribute('data-section-active');
+            activeElement = null;
+        }
+    }
+
+    window.addEventListener('message', async (event) => {
+        if (event.data.name === 'statamic.preview.updated') {
+            const text = await fetch(event.data.url).then((res) => res.text());
+            const updated = new DOMParser().parseFromString(text, 'text/html');
+            Alpine.morph(document.body, updated.body);
+            if (window.applyContrastColors) window.applyContrastColors();
+        }
+
+        if (event.data.name === 'statamic.preview.scrollToSection') {
+            clearHighlight();
+
+            const index = event.data.sectionIndex;
+            const fieldHandle = event.data.fieldHandle;
+            const itemIndex = event.data.itemIndex;
+            const section = document.querySelector(`[data-section-index="${index}"]`);
+            if (!section) return;
+
+            let target = null;
+
+            if (fieldHandle && itemIndex !== null && itemIndex !== undefined) {
+                const field = section.querySelector(`[data-field="${fieldHandle}"]`);
+                if (field) {
+                    target = field.querySelector(`[data-field-item="${itemIndex}"]`);
+                }
+            }
+
+            if (!target && fieldHandle) {
+                target = section.querySelector(`[data-field="${fieldHandle}"]`);
+            }
+
+            if (target && target.hasAttribute('data-field-item')) {
+                target.setAttribute('data-field-active', '');
+                activeElement = target;
+                target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            } else if (target && target.hasAttribute('data-field')) {
+                target.setAttribute('data-field-active', '');
+                activeElement = target;
+                target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            } else {
+                section.setAttribute('data-section-active', '');
+                activeElement = section;
+                section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+    });
+
+    document.addEventListener('click', (e) => {
+        const item = e.target.closest('[data-field-item]');
+        const field = e.target.closest('[data-field]');
+        const section = e.target.closest('[data-section-index]');
+        if (!section) return;
+
+        const sectionIndex = parseInt(section.dataset.sectionIndex);
+        const fieldHandle = field ? field.dataset.field : null;
+        const itemIndex = item ? parseInt(item.dataset.fieldItem) : null;
+        const focusField = item ? item.dataset.focusField || null : null;
+
+        clearHighlight();
+        if (item) {
+            item.setAttribute('data-field-active', '');
+            activeElement = item;
+        } else if (field) {
+            field.setAttribute('data-field-active', '');
+            activeElement = field;
+        } else {
+            section.setAttribute('data-section-active', '');
+            activeElement = section;
+        }
+
+        window.parent.postMessage({
+            name: 'statamic.preview.focusField',
+            sectionIndex: sectionIndex,
+            fieldHandle: fieldHandle,
+            itemIndex: itemIndex,
+            focusField: focusField,
+        }, '*');
+    });
+</script>

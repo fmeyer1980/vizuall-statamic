@@ -1,0 +1,23 @@
+<section class="wrapper grid md:grid-cols-[1fr_.9fr] py-lg gap-xl">
+    <div class="flow-y prose-p:text-current/70">
+        {{ text }}
+        <ul class="flex flex-wrap gap-2 flow-space-600">
+            {{ information }}
+                <li class="text-xs bg-dark-shade/8 py-[.5em] px-[1em] flex gap-[.4em]"><b>{{ title }}</b><span>{{ text }}</span></li>
+            {{ /information }}
+        </ul>
+        <div class="flow-space-700">
+            {{ links }}
+                {{ partial:components/btn color="dark" outline="true" }}
+            {{ /links }}
+        </div>
+    </div>
+    <div class="space-y-100">
+        <h3 class="text-400">{{ teacher.headline }}</h3>
+        <ul class="grid grid-cols-2 gap-gutter">
+            {{ teacher.list }}
+                {{ partial:components/employee_card }}
+            {{ /teacher.list }}
+        </ul>
+    </div>
+</section>
