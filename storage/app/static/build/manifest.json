@@ -1,0 +1,29 @@
+{
+  "public/fonts/AtlassianSans-latin.woff2": {
+    "file": "assets/AtlassianSans-latin-DMLbjE5H.woff2",
+    "src": "public/fonts/AtlassianSans-latin.woff2"
+  },
+  "public/fonts/Iconfont.woff2": {
+    "file": "assets/Iconfont-D7RZWNdV.woff2",
+    "src": "public/fonts/Iconfont.woff2"
+  },
+  "public/fonts/borna-medium.woff2": {
+    "file": "assets/borna-medium-viMBBafi.woff2",
+    "src": "public/fonts/borna-medium.woff2"
+  },
+  "resources/css/site.css": {
+    "file": "assets/site-DbKNKvJE.css",
+    "src": "resources/css/site.css",
+    "isEntry": true,
+    "name": "site",
+    "names": [
+      "site.css"
+    ]
+  },
+  "resources/js/site.js": {
+    "file": "assets/site-PUNjTHvT.js",
+    "name": "site",
+    "src": "resources/js/site.js",
+    "isEntry": true
+  }
+}
